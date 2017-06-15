@@ -68,5 +68,5 @@
   </platform>
     <plugin name="cordova-plugin-console" source="npm" />
     <plugin name="cordova-plugin-device" source="npm" />
-    <plugin name="com.wikitude.phonegap.WikitudePlugin" spec="https://github.com/Wikitude/wikitude-cordova-plugin.git" />
+    <plugin name="com.wikitude.phonegap.WikitudePlugin" spec="https://github.com/joroni/wikitude-cordova-plugin.git" />
 </widget>
