@@ -203,8 +203,8 @@ angular.module('app.controllers', ['app.profiles', 'ionic'])
     var app = {
 
         // Url/Path to the augmented reality experience you would like to load
-        arExperienceUrl: "http://localhost/experience/index.html",
-        //arExperienceUrl: base_url + "/ar/" + "experience/index.html",
+        // arExperienceUrl: "http://localhost/experience/index.html",
+        arExperienceUrl: base_url + "/ar/" + "experience/index.html",
         //arExperienceUrl: "http://10.228.193.226:3000/experience/index.html",
         // The features your augmented reality experience requires, only define the ones you really need
         requiredFeatures: ["2d_tracking", "geo"],
