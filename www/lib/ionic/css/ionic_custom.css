@@ -5637,6 +5637,7 @@ a.subdued:last-child {
 }
 
 .bar-header {
+    text-align: center !important;
     top: 0;
     border-top-width: 0;
     border-bottom-width: 1px;
@@ -5658,6 +5659,12 @@ a.subdued:last-child {
     border-bottom-width: 0;
     background-position: top;
     height: 44px;
+}
+
+.bar.bar-header .button+.title {
+    text-align: center !important;
+    left: 35px;
+    line-height: 46px;
 }
 
 .bar-footer.item-input-inset {
