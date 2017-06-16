@@ -5663,7 +5663,7 @@ a.subdued:last-child {
 
 .bar.bar-header .button+.title {
     text-align: center !important;
-    left: 35px;
+    /* left: 35px;*/
     line-height: 46px;
 }
 
@@ -13217,12 +13217,10 @@ a.dark {
 
 .title.title-center.header-item h1 img.branding {
     height: 20px;
-   
 }
 
 img.branding {
     height: 20px;
-   
 }
 
 #title.branding {
@@ -13231,16 +13229,15 @@ img.branding {
     background-position: center;
     margin-top: 10px;
     height: 20px;
-    width: 150px;
+    width: auto;
     border: 0px solid #eee;
     text-align: center;
 }
 
-.textSpan{
+.textSpan {
     border: 1px solid #eee;
     text-align: center;
     width: 100%;
-
 }
 
 .centered {
