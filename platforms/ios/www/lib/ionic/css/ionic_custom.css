@@ -13207,7 +13207,7 @@ a.dark {
 }
 
 .title.title-center.header-item h1 {
-    background: url(../img/logo.png) no-repeat;
+    background: url(../img/logo.svg) no-repeat;
     background-position: center center;
     background-size: contain;
     height: 20px;
@@ -13217,10 +13217,30 @@ a.dark {
 
 .title.title-center.header-item h1 img.branding {
     height: 20px;
+   
 }
 
 img.branding {
     height: 20px;
+   
+}
+
+#title.branding {
+    background: url(../img/logo.svg) no-repeat;
+    background-size: contain;
+    background-position: center;
+    margin-top: 10px;
+    height: 20px;
+    width: 150px;
+    border: 0px solid #eee;
+    text-align: center;
+}
+
+.textSpan{
+    border: 1px solid #eee;
+    text-align: center;
+    width: 100%;
+
 }
 
 .centered {
