@@ -69,7 +69,7 @@ typedef NS_ENUM(NSUInteger, WTScreenshotCaptureMode){
  * The WTRenderingAPI can be used choose which OpenGL version should be used by the SDK for rendering
  *
  */
-typedef NSString * WTRenderingAPI NS_EXTENSIBLE_STRING_ENUM;
+typedef NSString * WTRenderingAPI; NS_EXTENSIBLE_STRING_ENUM;
 
 /**
  * Specifies that an OpenGL ES 2 context should be used by the SDK for rendering

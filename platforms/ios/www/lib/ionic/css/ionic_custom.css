@@ -5663,7 +5663,11 @@ a.subdued:last-child {
 
 .bar.bar-header .button+.title {
     text-align: center !important;
+<<<<<<< HEAD
     /*  left: 35px;*/
+=======
+    /* left: 35px;*/
+>>>>>>> origin/master
     line-height: 46px;
 }
 
@@ -13207,7 +13211,7 @@ a.dark {
 }
 
 .title.title-center.header-item h1 {
-    background: url(../img/logo.png) no-repeat;
+    background: url(../img/logo.svg) no-repeat;
     background-position: center center;
     background-size: contain;
     height: 20px;
@@ -13221,6 +13225,23 @@ a.dark {
 
 img.branding {
     height: 20px;
+}
+
+#title.branding {
+    background: url(../img/logo.svg) no-repeat;
+    background-size: contain;
+    background-position: center;
+    margin-top: 10px;
+    height: 20px;
+    width: auto;
+    border: 0px solid #eee;
+    text-align: center;
+}
+
+.textSpan {
+    border: 1px solid #eee;
+    text-align: center;
+    width: 100%;
 }
 
 .centered {
