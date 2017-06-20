@@ -11,7 +11,7 @@ var openFB = (function() {
     //var baseURL = localStorage.getItem('baseURL')
     var FB_LOGIN_URL = 'https://www.facebook.com/dialog/oauth',
         FB_LOGOUT_URL = 'https://www.facebook.com/logout.php',
-        baseURLCustom = 'http://localhost:3000',
+        baseURLCustom = 'http://localhost:8100',
 
         // By default we store fbtoken in sessionStorage. This can be overridden in init()
         tokenStore = window.sessionStorage,

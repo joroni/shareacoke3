@@ -22,7 +22,7 @@ var base_url = "http://ec2-54-186-121-116.us-west-2.compute.amazonaws.com/iknow/
 var app = {
 
     // Url/Path to the augmented reality experience you would like to load
-    //arExperienceUrl: "http://192.168.1.5:3000/experience/index.html",
+    //arExperienceUrl: "http://192.168.1.5:8100/experience/index.html",
     arExperienceUrl: base_url + "/ar/" + "experience/index.html",
     // The features your augmented reality experience requires, only define the ones you really need
     requiredFeatures: ["2d_tracking", "geo"],

@@ -5637,6 +5637,7 @@ a.subdued:last-child {
 }
 
 .bar-header {
+    text-align: center !important;
     top: 0;
     border-top-width: 0;
     border-bottom-width: 1px;
@@ -5658,6 +5659,12 @@ a.subdued:last-child {
     border-bottom-width: 0;
     background-position: top;
     height: 44px;
+}
+
+.bar.bar-header .button+.title {
+    text-align: center !important;
+    /*  left: 35px;*/
+    line-height: 46px;
 }
 
 .bar-footer.item-input-inset {
@@ -11652,7 +11659,7 @@ progress {
     color: #fff;
 }
 
-.button.button-assertive {
+button-urgent .button.button-assertive {
     border-color: transparent;
     background-color: #ef473a;
     color: #fff;
@@ -13305,14 +13312,14 @@ h2.ng-binding {
 /* Portrait layout (default) */
 
 .apps {
-    background: url(../img/tshirt_samurai.png) no-repeat center top;
+    /* background: url(../img/tshirt_samurai.png) no-repeat center top; */
     /* 180 x 225 */
     position: absolute;
     /* position in the center of the screen */
     left: 50%;
     top: 50%;
-    height: 100px;
-    /* text area height */
+    /* height: 100px;
+     text area height */
     width: 300px;
     /* text area width */
     text-align: center;
@@ -13345,4 +13352,51 @@ h1 {
     padding: 0px;
     text-align: center;
     color: white;
+}
+
+
+/***/
+
+.button.button-urgent {
+    border-color: transparent;
+    background-color: #d10000;
+    color: #eee;
+    border-radius: 10px !important;
+}
+
+.button.button-urgent:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.button.button-urgent.active,
+.button.button-urgent.activated {
+    border-color: #d10000;
+    color: #d10000;
+    background-color: #fff;
+}
+
+.button.button-urgent.button-clear {
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+    color: #11c1f3;
+}
+
+.button.button-urgent.button-icon {
+    border-color: transparent;
+    background: none;
+}
+
+.button.button-urgent.button-outline {
+    border-color: #11c1f3;
+    background: transparent;
+    color: #11c1f3;
+}
+
+.button.button-urgent.button-outline.active,
+.button.button-urgent.button-outline.activated {
+    background-color: #11c1f3;
+    box-shadow: none;
+    color: #fff;
 }

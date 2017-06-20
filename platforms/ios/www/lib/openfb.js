@@ -21,7 +21,9 @@ var openFB = (function($rootScope, $q, $window, $http) {
 
         context = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)),
 
-        baseURL = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + context,
+        //baseURL = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + context,
+
+        baseURL = 'http://localhost:8100' + context,
 
         oauthRedirectURL = baseURL + '/oauthcallback.html',
 

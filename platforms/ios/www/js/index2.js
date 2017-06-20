@@ -45,7 +45,7 @@ var app = {
 var app = {
 
     // Url/Path to the augmented reality experience you would like to load
-    //arExperienceUrl: "http://192.168.1.5:3000/experience/index.html",
+    //arExperienceUrl: "http://192.168.1.5:8100/experience/index.html",
     arExperienceUrl: base_url + "/ar/" + "experience/index.html",
     // The features your augmented reality experience requires, only define the ones you really need
     requiredFeatures: ["2d_tracking", "geo"],

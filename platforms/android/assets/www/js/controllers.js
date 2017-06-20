@@ -186,11 +186,6 @@ angular.module('app.controllers', ['app.profiles', 'ionic'])
 
 
 
-    $scope.launchAR = function() {
-        // alert('Payment Connection Needed');
-        //   window.location.href = "#/tab/ar";
-        app.initialize();
-    };
 
 
     /*
@@ -200,123 +195,132 @@ angular.module('app.controllers', ['app.profiles', 'ionic'])
                 app.initialize();
             });
         };*/
-    var app = {
 
-        // Url/Path to the augmented reality experience you would like to load
-        // arExperienceUrl: "http://localhost/experience/index.html",
-        arExperienceUrl: base_url + "/ar/" + "experience/index.html",
-        //arExperienceUrl: "http://10.228.193.226:3000/experience/index.html",
-        // The features your augmented reality experience requires, only define the ones you really need
-        requiredFeatures: ["2d_tracking", "geo"],
-        // Represents the device capability of launching augmented reality experiences with specific features
-        isDeviceSupported: false,
-        // Additional startup settings, for now the only setting available is camera_position (back|front)
-        startupConfiguration: {
-            "camera_position": "back"
-        },
-        // Application Constructor
-        initialize: function() {
-            this.bindEvents();
-            //  this.worldLoadedFn();
+    $scope.launchAR = function() {
+        var app = {
 
-        },
-        /* worldLoadedFn: function worldLoadedFn() {
-             var message = " style='text-align: center; font-family:Arial, sans-serif;'";
-             document.getElementById('loading').innerHTML =
-                 "<div" + message + ">Swipe right or use back button to exit.</div>";
+            // Url/Path to the augmented reality experience you would like to load
+            // arExperienceUrl: "http://localhost/experience/index.html",
+            arExperienceUrl: base_url + "/ar/" + "experience/index.html",
+            //arExperienceUrl: "http://10.228.193.226:8100/experience/index.html",
+            // The features your augmented reality experience requires, only define the ones you really need
+            requiredFeatures: ["2d_tracking", "geo"],
+            // Represents the device capability of launching augmented reality experiences with specific features
+            isDeviceSupported: false,
+            // Additional startup settings, for now the only setting available is camera_position (back|front)
+            startupConfiguration: {
+                "camera_position": "back"
+            },
+            // Application Constructor
+            initialize: function() {
+                this.bindEvents();
+                this.worldLoadedFn();
 
-             // Remove Scan target message after 10 sec.
-             setTimeout(function() {
-                 var e = document.getElementById('loading');
-                 e.parentElement.removeChild(e);
-             }, 10000);
-         },*/
+            },
+            worldLoadedFn: function worldLoadedFn() {
+                var message = " style='text-align: center; font-family:Arial, sans-serif;'";
+                document.getElementById('loading').innerHTML =
+                    "<div" + message + ">Swipe right or use back button to exit.</div>";
 
-
-
-        // Bind Event Listeners
-        //
-        // Bind any events that are required on startup. Common events are:
-        // 'load', 'deviceready', 'offline', and 'online'.
-        bindEvents: function() {
-            document.addEventListener('deviceready', this.onDeviceReady, false);
-        },
-        // deviceready Event Handler
-
-        onDeviceReady: function() {
-
-            app.wikitudePlugin = cordova.require("com.wikitude.phonegap.WikitudePlugin.WikitudePlugin");
-            app.wikitudePlugin.isDeviceSupported(app.onDeviceSupported, app.onDeviceNotSupported, app.requiredFeatures);
-            // var launchDemoButton = document.getElementById('launch-demo');
-            // launchDemoButton.onclick = function() {
-            $scope.launchDemoButton = function() {
-                //   alert('Hi');
-                app.loadARchitectWorld();
-                app.initialize();
+                // Remove Scan target message after 10 sec.
+                setTimeout(function() {
+                    var e = document.getElementById('loading');
+                    e.parentElement.removeChild(e);
+                }, 10000);
+            },
 
 
 
-            }
-        },
-        loadARchitectWorld: function() {
-            app.wikitudePlugin.isDeviceSupported(function() {
-                app.wikitudePlugin.loadARchitectWorld(function successFn(loadedURL) {}, function errorFn(error) {
-                        alert('Loading AR web view failed: ' + error);
-                    },
+            // Bind Event Listeners
+            //
+            // Bind any events that are required on startup. Common events are:
+            // 'load', 'deviceready', 'offline', and 'online'.
+            bindEvents: function() {
+                document.addEventListener('deviceready', this.onDeviceReady, false);
+            },
+            // deviceready Event Handler
+
+            onDeviceReady: function() {
+
+                app.wikitudePlugin = cordova.require("com.wikitude.phonegap.WikitudePlugin.WikitudePlugin");
+                app.wikitudePlugin.isDeviceSupported(app.onDeviceSupported, app.onDeviceNotSupported, app.requiredFeatures);
+                // var launchDemoButton = document.getElementById('launch-demo');
+                // launchDemoButton.onclick = function() {
+                $scope.launchDemoButton = function() {
+                    //   alert('Hi');
+                    app.loadARchitectWorld();
+                    app.initialize();
 
 
-                    // cordova.file.dataDirectory + 'www/experience/index.html', ['2d_tracking'], { camera_position: 'back' }
-                    cordova.file.dataDirectory + arExperienceUrl, ['2d_tracking'], { camera_position: 'back' }
+
+                }
+            },
+            loadARchitectWorld: function() {
+                app.wikitudePlugin.isDeviceSupported(function() {
+                    app.wikitudePlugin.loadARchitectWorld(function successFn(loadedURL) {}, function errorFn(error) {
+                            alert('Loading AR web view failed: ' + error);
+                        },
+
+
+                        // cordova.file.dataDirectory + 'www/experience/index.html', ['2d_tracking'], { camera_position: 'back' }
+                        cordova.file.dataDirectory + arExperienceUrl, ['2d_tracking'], { camera_position: 'back' }
+                    );
+                }, function(errorMessage) {
+                    alert(errorMessage);
+                }, ['2d_tracking']);
+            },
+            // Callback if the device supports all required features
+            onDeviceSupported: function() {
+                app.wikitudePlugin.loadARchitectWorld(
+                    app.onARExperienceLoadedSuccessful,
+                    app.onARExperienceLoadError,
+                    app.arExperienceUrl,
+                    app.requiredFeatures,
+                    app.startupConfiguration
                 );
-            }, function(errorMessage) {
+            },
+            // Callback if the device does not support all required features
+            onDeviceNotSupported: function(errorMessage) {
                 alert(errorMessage);
-            }, ['2d_tracking']);
-        },
-        // Callback if the device supports all required features
-        onDeviceSupported: function() {
-            app.wikitudePlugin.loadARchitectWorld(
-                app.onARExperienceLoadedSuccessful,
-                app.onARExperienceLoadError,
-                app.arExperienceUrl,
-                app.requiredFeatures,
-                app.startupConfiguration
-            );
-        },
-        // Callback if the device does not support all required features
-        onDeviceNotSupported: function(errorMessage) {
-            alert(errorMessage);
-        },
-        // Callback if your AR experience loaded successful
-        onARExperienceLoadedSuccessful: function(loadedURL) {
-            /* Respond to successful augmented reality experience loading if you need to */
-        },
-        // Callback if your AR experience did not load successful
-        onARExperienceLoadError: function(errorMessage) {
-            alert('Loading AR web view failed: ' + errorMessage);
-        },
+            },
+            // Callback if your AR experience loaded successful
+            onARExperienceLoadedSuccessful: function(loadedURL) {
+                /* Respond to successful augmented reality experience loading if you need to */
+            },
+            // Callback if your AR experience did not load successful
+            onARExperienceLoadError: function(errorMessage) {
+                alert('Loading AR web view failed: ' + errorMessage);
+            }
 
+
+        };
+        // $scope.launchAR = function() {
+        // alert('Payment Connection Needed');
+        //   window.location.href = "#/tab/ar";
+        app.initialize();
+        // };
+
+        //  app.initialize();
+        /*
+            $scope.open = function() {
+                init().then(function() {
+                    $scope.modal.show();
+
+                });
+            }
+            $scope.closeWithRemove = function() {
+                $scope.modal.remove()
+                    .then(function() {
+                        $scope.modal = null;
+                    });
+            };
+
+            $scope.closeWithoutRemove = function() {
+                $scope.modal.hide();
+            };
+        */
 
     };
-
-    //  app.initialize();
-
-    $scope.open = function() {
-        init().then(function() {
-            $scope.modal.show();
-
-        });
-    }
-    $scope.closeWithRemove = function() {
-        $scope.modal.remove()
-            .then(function() {
-                $scope.modal = null;
-            });
-    };
-
-    $scope.closeWithoutRemove = function() {
-        $scope.modal.hide();
-    };
-
 })
 
 
